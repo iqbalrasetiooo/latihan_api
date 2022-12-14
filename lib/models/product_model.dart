@@ -4,24 +4,29 @@ class ProductModel {
   Profile? profile;
   String? id;
 
-  ProductModel({this.username, this.knownIps, this.profile, this.id});
+  ProductModel({
+    this.username,
+    this.knownIps,
+    this.profile,
+    this.id,
+  });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     username = json['username'];
     knownIps = json['knownIps'].cast<String>();
     profile =
-        json['profile'] != null ? new Profile.fromJson(json['profile']) : null;
+        json['profile'] != null ? Profile.fromJson(json['profile']) : null;
     id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['username'] = this.username;
-    data['knownIps'] = this.knownIps;
-    if (this.profile != null) {
-      data['profile'] = this.profile!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['username'] = username;
+    data['knownIps'] = knownIps;
+    if (profile != null) {
+      data['profile'] = profile!.toJson();
     }
-    data['id'] = this.id;
+    data['id'] = id;
     return data;
   }
 }
@@ -31,7 +36,11 @@ class Profile {
   String? lastName;
   List<int>? staticData;
 
-  Profile({this.firstName, this.lastName, this.staticData});
+  Profile({
+    this.firstName,
+    this.lastName,
+    this.staticData,
+  });
 
   Profile.fromJson(Map<String, dynamic> json) {
     firstName = json['firstName'];
@@ -40,10 +49,10 @@ class Profile {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['firstName'] = this.firstName;
-    data['lastName'] = this.lastName;
-    data['staticData'] = this.staticData;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['firstName'] = firstName;
+    data['lastName'] = lastName;
+    data['staticData'] = staticData;
     return data;
   }
 }
